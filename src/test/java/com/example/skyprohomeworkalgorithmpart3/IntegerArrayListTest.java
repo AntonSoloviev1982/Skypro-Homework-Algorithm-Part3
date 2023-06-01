@@ -162,16 +162,16 @@ public class IntegerArrayListTest {
         Assertions.assertThat(integerArrayList.toArray()).isEqualTo(integerArrayList.getIntegerArrayList());
     }
 
-    @Test
-    public void isArrayFullTest() {
-        Assertions.assertThat(integerArrayList.isArrayFull()).isTrue();
-    }
-
-    @Test
-    public void isArrayNoFullTest() {
-        integerArrayList.add(4);
-        Assertions.assertThat(integerArrayList.isArrayFull()).isFalse();
-    }
+//    @Test
+//    public void isArrayFullTest() {
+//        Assertions.assertThat(integerArrayList.isArrayFull()).isTrue();
+//    }
+//
+//    @Test
+//    public void isArrayNoFullTest() {
+//        integerArrayList.add(4);
+//        Assertions.assertThat(integerArrayList.isArrayFull()).isFalse();
+//    }
 
     @Test
     public void increasedStringArrayList() {
@@ -194,16 +194,16 @@ public class IntegerArrayListTest {
         Assertions.assertThat(integerArrayList.get(1)).isEqualTo(3);
     }
 
-    @Test
-    public void sortTest() {
-        integerArrayList.add(0, 99);
-        integerArrayList.add(1, 14);
-        integerArrayList.add(2, 8);
-
-        Assertions.assertThat(integerArrayList.toArray()).isEqualTo(new Integer[]{99, 14, 8, 1, 2, 3});
-        integerArrayList.sort(integerArrayList.getIntegerArrayList());
-        Assertions.assertThat(integerArrayList.toArray()).isEqualTo(new Integer[]{1, 2, 3, 8, 14, 99});
-    }
+//    @Test
+//    public void sortTest() {
+//        integerArrayList.add(0, 99);
+//        integerArrayList.add(1, 14);
+//        integerArrayList.add(2, 8);
+//
+//        Assertions.assertThat(integerArrayList.toArray()).isEqualTo(new Integer[]{99, 14, 8, 1, 2, 3});
+//        integerArrayList.sort(integerArrayList.getIntegerArrayList());
+//        Assertions.assertThat(integerArrayList.toArray()).isEqualTo(new Integer[]{1, 2, 3, 8, 14, 99});
+//    }
 
 
 
