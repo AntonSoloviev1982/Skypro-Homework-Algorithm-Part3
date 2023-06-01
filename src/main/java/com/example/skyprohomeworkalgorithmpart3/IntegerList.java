@@ -78,5 +78,5 @@ public interface IntegerList {
     // и вернуть его.
     Integer[] toArray();
 
-    void sort(Integer[] arr);
+    void sort(Integer[] arr, int begin, int end);
 }

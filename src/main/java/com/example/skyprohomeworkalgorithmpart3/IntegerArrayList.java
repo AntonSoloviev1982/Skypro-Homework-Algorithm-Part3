@@ -97,7 +97,7 @@ public class IntegerArrayList implements IntegerList {
 
     @Override
     public boolean contains(Integer item) {
-        sort(integerArrayList);
+        sort(integerArrayList, integerArrayList[0], integerArrayList[integerArrayList.length - 1]);
         return binarySearch(integerArrayList, item);
     }
 
@@ -177,17 +177,12 @@ public class IntegerArrayList implements IntegerList {
     }
 
     @Override
-    public void sort(Integer[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            int idxMin = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[idxMin] > arr[j]) {
-                    idxMin = j;
-                }
-            }
-            int temp = arr[i];
-            arr[i] = arr[idxMin];
-            arr[idxMin] = temp;
+    public void sort(Integer[] arr, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            sort(arr, begin, partitionIndex - 1);
+            sort(arr, partitionIndex + 1, end);
         }
     }
 
@@ -195,7 +190,10 @@ public class IntegerArrayList implements IntegerList {
 
 
     public void increasedStringArrayList() {
-        Integer[] newArray = new Integer[integerArrayList.length * 2];
+        int length = integerArrayList.length;
+        double increase = 1.5;
+        double newLength = increase * length;
+        Integer[] newArray = new Integer[(int)newLength];
         System.arraycopy(integerArrayList, 0, newArray, 0, integerArrayList.length);
         integerArrayList = newArray;
     }
@@ -238,6 +236,29 @@ public class IntegerArrayList implements IntegerList {
             return false;
         }
         return true;
+    }
+
+
+    private static int partition(Integer[] arr, int begin, int end) {
+        int pivot = arr[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                swapElements(arr, i, j);
+            }
+        }
+
+        swapElements(arr, i + 1, end);
+        return i + 1;
+    }
+
+    private static void swapElements(Integer[] arr, int left, int right) {
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
     }
 
 
